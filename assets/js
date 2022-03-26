@@ -1,0 +1,33 @@
+var submit = document.querySelector("#submit-btn");
+submit.addEventListener('click', function() {
+    var submitText = document.querySelector("#search-text");
+    var searchText = submitText.value;
+    var requestUri = "https://api.openweathermap.org/data/2.5/weather?q="+searchText+"&appid=e853d95818881ad06f8fae61b62517ad&units=imperial";
+    var weatherForecastUri = "https://api.openweathermap.org/data/2.5/forecast?q="+searchText+"&appid=e853d95818881ad06f8fae61b62517ad&units=imperial";
+    console.log(requestUri);
+    
+    // Main City Search
+    fetch(requestUri)
+    .then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+            var cityName = document.querySelector(".city-title");
+            cityName.textContent = data.name;
+            var cityTemp = document.querySelector(".temp");
+            cityTemp.textContent = "Temp: " + data.main.temp + "F";
+            var cityWind = document.querySelector(".wind");
+            cityWind.textContent = "Wind: " + data.wind.speed + " MPH";
+            var cityHumidity = document.querySelector(".humidity");
+            cityHumidity.textContent = "Humidity: " + data.main.humidity + "%";
+        });
+    });
+
+    // 5 Day Forecast
+    fetch(weatherForecastUri)
+    .then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+
+        });
+    });
+});
