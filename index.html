@@ -10,84 +10,92 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <nav>
-            <h1>Weather Dashboard</h1>
+            <h1 class="website-title">Weather Dashboard</h1>
         </nav>
+
+        <!-- Search Box -->
     
-        <div>
-            <h2>Search for a City</h2>
-            <input type="text" id="search-text">
-            <input type="submit" value="Search" id="submit-btn">
-        </div>
-    
-        <div id="weather-container">
-            <h1 class="city-title">City Name</h1>
-            <h4 class="temp"></h4>
-            <h4 class="wind"></h4>
-            <h4 class="humidity"></h4>
-            <h4 class="uv-index">UV Index:</h4>
-        </div>
-    
-    
-        <h3>5-Day Forecast:</h3>
         <div class="row">
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">date</h5>
-                        <h3 class="card-text">temp</h3>
-                        <h3 class="card-text">wind</h3>
-                        <h3 class="card-text">humidity</h3>
-                    </div>
-                </div>
+            <div class="col-lg-4">
+                <h2>Search for a City:</h2>
+                <input type="text" id="search-text">
+                <input type="submit" value="Search" id="submit-btn">
             </div>
-
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">date</h5>
-                        <h3 class="card-text">temp</h3>
-                        <h3 class="card-text">wind</h3>
-                        <h3 class="card-text">humidity</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">date</h5>
-                        <h3 class="card-text">temp</h3>
-                        <h3 class="card-text">wind</h3>
-                        <h3 class="card-text">humidity</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">date</h5>
-                        <h3 class="card-text">temp</h3>
-                        <h3 class="card-text">wind</h3>
-                        <h3 class="card-text">humidity</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">date</h5>
-                        <h3 class="card-text">temp</h3>
-                        <h3 class="card-text">wind</h3>
-                        <h3 class="card-text">humidity</h3>
-                    </div>
-                </div>
+        
+            <div id="weather-container" class="col-lg-4">
+                <h1 class="city-title"></h1>
+                <h1 class="city-date"></h1>
+                <h4 class="temp"></h4>
+                <h4 class="wind"></h4>
+                <h4 class="humidity"></h4>
+                <h4 class="uv-index"></h4>
             </div>
         </div>
+
+        <div class="container-fluid"> 
+            <h3>5-Day Forecast:</h3>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-date-1"></h5>
+                            <i class="icon-1"></i>
+                            <h3 class="card-text-1"></h3>
+                            <h3 class="card-wind-1"></h3>
+                            <h3 class="card-humidity-1"></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-date-2"></h5>
+                            <h3 class="card-text-2"></h3>
+                            <h3 class="card-wind-2"></h3>
+                            <h3 class="card-humidity-2"></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-date-3"></h5>
+                            <h3 class="card-text-3"></h3>
+                            <h3 class="card-wind-3"></h3>
+                            <h3 class="card-humidity-3"></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-date-4"></h5>
+                            <h3 class="card-text-4"></h3>
+                            <h3 class="card-wind-4"></h3>
+                            <h3 class="card-humidity-4"></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-date-5"></h5>
+                            <h3 class="card-text-5"></h3>
+                            <h3 class="card-wind-5"></h3>
+                            <h3 class="card-humidity-5"></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="./assets/js"></script>   
     </div>
 </body>

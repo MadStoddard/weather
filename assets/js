@@ -11,6 +11,8 @@ submit.addEventListener('click', function() {
     .then(function(response) {
         response.json().then(function(data) {
             console.log(data);
+            var currentDay = document.querySelector(".city-date");
+            currentDay.textContent = moment().format("M/DD/YYYY");
             var cityName = document.querySelector(".city-title");
             cityName.textContent = data.name;
             var cityTemp = document.querySelector(".temp");
@@ -19,6 +21,12 @@ submit.addEventListener('click', function() {
             cityWind.textContent = "Wind: " + data.wind.speed + " MPH";
             var cityHumidity = document.querySelector(".humidity");
             cityHumidity.textContent = "Humidity: " + data.main.humidity + "%";
+
+            // index
+            var cityIndex = document.querySelector(".uv-index");
+            cityIndex.textContent = "UV Index: " + data.index;
+
+            // if()
         });
     });
 
@@ -28,6 +36,63 @@ submit.addEventListener('click', function() {
         response.json().then(function(data) {
             console.log(data);
 
+            // date
+            var dayOneDate = document.querySelector(".card-date-1")
+            dayOneDate.textContent = moment(data.list[0].dt_txt).format("M/DD/YYYY");
+            var dayTwoDate = document.querySelector(".card-date-2")
+            dayTwoDate.textContent = moment(data.list[11].dt_txt).format("M/DD/YYYY");
+            var dayThreeDate = document.querySelector(".card-date-3")
+            dayThreeDate.textContent = moment(data.list[19].dt_txt).format("M/DD/YYYY");
+            var dayFourDate = document.querySelector(".card-date-4")
+            dayFourDate.textContent = moment(data.list[27].dt_txt).format("M/DD/YYYY");
+            var dayFiveDate = document.querySelector(".card-date-5")
+            dayFiveDate.textContent = moment(data.list[35].dt_txt).format("M/DD/YYYY");
+            
+            
+            // icon
+            var dayOneIcon = document.querySelector(".icon-1");
+            dayOneIcon = data.list[0].weather[0].icon;
+            console.log(dayOneIcon)
+            
+            // Temp
+            var dayOneTemp = document.querySelector(".card-text-1")
+            dayOneTemp.textContent = "Temp: " + data.list[3].main.temp + "F";
+            var dayTwoTemp = document.querySelector(".card-text-2")
+            dayTwoTemp.textContent = "Temp: " + data.list[11].main.temp + "F";
+            var dayThreeTemp = document.querySelector(".card-text-3")
+            dayThreeTemp.textContent = "Temp: " + data.list[19].main.temp + "F";
+            var dayFourTemp = document.querySelector(".card-text-4")
+            dayFourTemp.textContent = "Temp: " + data.list[27].main.temp + "F";
+            var dayFiveTemp = document.querySelector(".card-text-5")
+            dayFiveTemp.textContent = "Temp: " + data.list[35].main.temp + "F";
+           
+            // Wind
+            var dayOneWind = document.querySelector(".card-wind-1")
+            dayOneWind.textContent = "Wind: " + data.list[3].wind.speed + "MPH";
+            var dayTwoWind = document.querySelector(".card-wind-2")
+            dayTwoWind.textContent = "Wind: " + data.list[11].wind.speed + "MPH";
+            var dayThreeWind = document.querySelector(".card-wind-3")
+            dayThreeWind.textContent = "Wind: " + data.list[19].wind.speed + "MPH";
+            var dayFourWind = document.querySelector(".card-wind-4")
+            dayFourWind.textContent = "Wind: " + data.list[27].wind.speed + "MPH";
+            var dayFiveWind = document.querySelector(".card-wind-5")
+            dayFiveWind.textContent = "Wind: " + data.list[35].wind.speed + "MPH";
+          
+            // Humidity
+            var dayOneHumidity = document.querySelector(".card-humidity-1")
+            dayOneHumidity.textContent = "Humidity: " + data.list[3].main.humidity + "%";
+            var dayTwoHumidity = document.querySelector(".card-humidity-2")
+            dayTwoHumidity.textContent = "Humidity: " + data.list[11].main.humidity + "%";
+            var dayThreeHumidity = document.querySelector(".card-humidity-3")
+            dayThreeHumidity.textContent = "Humidity: " + data.list[19].main.humidity + "%";
+            var dayFourHumidity = document.querySelector(".card-humidity-4")
+            dayFourHumidity.textContent = "Humidity: " + data.list[27].main.humidity + "%";
+            var dayFiveHumidity = document.querySelector(".card-humidity-5")
+            dayFiveHumidity.textContent = "Humidity: " + data.list[35].main.humidity + "%";
         });
-    });
+    });  
 });
+
+// var saveSearch = function() {
+
+// }

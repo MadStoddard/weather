@@ -1,0 +1,36 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+}
+
+.website-title {
+    background-color: rgb(17, 107, 167);
+    color:azure;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.card-date-1, .card-text-1, .card-wind-1, .card-humidity-1 {
+    font-size: 15px;
+}
+
+.card-date-2, .card-text-2, .card-wind-2, .card-humidity-2 {
+    font-size: 15px;
+}
+
+.card-date-3, .card-text-3, .card-wind-3, .card-humidity-3 {
+    font-size: 15px;
+}
+
+.card-date-4, .card-text-4, .card-wind-4, .card-humidity-4 {
+    font-size: 15px;
+}
+
+.card-date-5, .card-text-5, .card-wind-5, .card-humidity-5 {
+    font-size: 15px;
+}
+
+
+
+
+
