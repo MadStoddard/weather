@@ -13,7 +13,7 @@ The website allows a user to search for weather data of a chosen city. This weat
 
 ## Installation
 
-This website requires no installation. Click link to open webpage: [https://madstoddard.github.io/whats-the-weather/](Whats The Weather? Website)
+This website requires no installation. Click link to open webpage: [https://madstoddard.github.io/whats-the-weather/] (Whats The Weather? Website)
 
 ## Usage
 
