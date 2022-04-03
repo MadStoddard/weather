@@ -1,9 +1,13 @@
 var submit = document.querySelector("#submit-btn");
-submit.addEventListener('click', function() {
+var searchedCities = JSON.parse(localStorage.getItem("searchedCities")) || []
+
+
+function getWeatherData () {
     var submitText = document.querySelector("#search-text");
     var searchText = submitText.value;
     var requestUri = "https://api.openweathermap.org/data/2.5/weather?q="+searchText+"&appid=e853d95818881ad06f8fae61b62517ad&units=imperial";
     var weatherForecastUri = "https://api.openweathermap.org/data/2.5/forecast?q="+searchText+"&appid=e853d95818881ad06f8fae61b62517ad&units=imperial";
+    var uvIndexUri = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid=e853d95818881ad06f8fae61b62517ad&units=imperial";
     console.log(requestUri);
     
     // Main City Search
@@ -21,12 +25,24 @@ submit.addEventListener('click', function() {
             cityWind.textContent = "Wind: " + data.wind.speed + " MPH";
             var cityHumidity = document.querySelector(".humidity");
             cityHumidity.textContent = "Humidity: " + data.main.humidity + "%";
+        });
+    
 
-            // index
-            var cityIndex = document.querySelector(".uv-index");
-            cityIndex.textContent = "UV Index: " + data.index;
+        fetch(uvIndexUri)
+        .then(function(response) {
+            response.json().then(function(data) {
+                console.log(data);
+                var cityIndex = document.querySelector(".uv-index");
+                cityIndex.textContent = "UV Index: " + data.current.uvi;
 
-            // if()
+                if (data.current.uvi <= 2) {
+                    cityIndex.classList.add("index-low");
+                } else if (data.current.uvi <= 2 < 5) {
+                    cityIndex.classList.add("index-medium");
+                } else {
+                    cityIndex.classList.add("index-high");
+                };
+            });
         });
     });
 
@@ -90,9 +106,90 @@ submit.addEventListener('click', function() {
             var dayFiveHumidity = document.querySelector(".card-humidity-5")
             dayFiveHumidity.textContent = "Humidity: " + data.list[35].main.humidity + "%";
         });
-    });  
-});
+    }); 
 
-// var saveSearch = function() {
+    
+     
+    saveClick(searchText);
+}
 
-// }
+function saveClick (cityName) {
+
+    // how do you know if this cityName is already inside of the searchCities array
+    var shouldIAdd = searchedCities.includes(cityName);
+    
+    if(shouldIAdd = true) {
+        createCityButton(cityName)
+
+        searchedCities.push(cityName)
+    
+        localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+    } 
+};
+
+function createCityButton (cityName) {
+    var pastCityContainer = document.querySelector(".past-city-container");
+    var pastCityDiv = document.createElement("div");
+    var pastCityText = document.createElement("button");
+
+    pastCityText.textContent = cityName
+    pastCityText.addEventListener("click", function() {
+
+        var submitText = document.querySelector("#search-text");
+        submitText.value = cityName
+
+        getWeatherData()
+    })
+
+    pastCityContainer.append(pastCityDiv);
+    pastCityDiv.append(pastCityText);
+}
+
+submit.addEventListener('click', getWeatherData);
+
+
+// createCityButton("New York")
+// createCityButton("Chicago")
+// createCityButton("Tampa")
+
+
+console.log(searchedCities)
+
+for (let i = 0; i < searchedCities.length; i++) {
+   createCityButton(searchedCities[i])
+}
+
+
+
+// SIMULATION
+
+// 1st LOOP
+// i = 0
+// i < 2
+// 0 < 2 -> true
+// createCityButton(searchedCities[0])
+// createCityButton("New York")
+// i++
+// i = i + 1
+// i = 0 + 1
+// i = 1
+
+// 2nd LOOP
+// i = 1
+// i < 2
+// 1 < 2 -> true
+// createCityButton(searchedCities[1])
+// createCityButton("Tampa")
+// i++
+// i = i + 1
+// i = 1 + 1
+// i = 2
+
+// 3rd LOOP
+// i = 2
+// i < 2
+// 2 < 2 -> FALSE
+// END OF THE FOR LOOP
+
+
+
